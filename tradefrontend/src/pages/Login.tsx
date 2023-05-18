@@ -1,6 +1,7 @@
 import SendIcon from "@mui/icons-material/Send";
 import { Grid, Button } from "@mui/material";
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import InputLogin from "../components/InputLogin";
 import TradeContext from "../context/TradeContext";
@@ -8,8 +9,10 @@ import RequestAPI from "../utils/RequestAPI";
 
 function Login() {
   const { apiKey } = useContext(TradeContext);
+  const navigate = useNavigate();
+
   const LoginKey = () => {
-    RequestAPI(apiKey, "countries");
+    RequestAPI(apiKey, "countries", navigate);
   };
 
   return (
@@ -26,7 +29,6 @@ function Login() {
         sx={{ overflow: "auto", maxHeight: "86vh" }}
       >
         <InputLogin xs={2} md={2} lg={2} />
-        {/* <Name isRequired={false} xs={12} md={6} /> */}
         <Grid item>
           <Button
             variant="contained"
