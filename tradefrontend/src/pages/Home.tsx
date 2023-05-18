@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import TradeContext from "../context/TradeContext";
 
 function Home() {
-  return <h1>Home</h1>;
+  const { apiKey } = useContext(TradeContext);
+  return <h1>{apiKey}</h1>;
 }
 
 export default Home;
