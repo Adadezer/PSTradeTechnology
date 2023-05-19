@@ -1,13 +1,26 @@
-import React, { useContext } from "react";
+import { Grid } from "@mui/material";
+// import React, { useContext } from "react";
 
-import TradeContext from "../context/TradeContext";
+import SelectCountry from "../components/SelectCountry";
+// import TradeContext from "../context/TradeContext";
 
 function Home() {
-  const { apiKey } = useContext(TradeContext);
+  // const { apiKey } = useContext(TradeContext);
   return (
     <>
       <h1>Home</h1>
-      <h2>{apiKey}</h2>;
+      <Grid
+        container
+        component="form"
+        spacing={1}
+        direction="column"
+        p={1}
+        noValidate
+        autoComplete="off"
+        sx={{ overflow: "auto", maxHeight: "86vh" }}
+      >
+        <SelectCountry />
+      </Grid>
     </>
   );
 }
