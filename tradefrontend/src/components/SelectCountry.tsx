@@ -5,15 +5,16 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
+import TradeContext from "../context/TradeContext";
 import ICountry from "../interfaces/ICountry";
 import ISizeMandatory from "../interfaces/ISizeMandatory";
 import RequestAPI from "../utils/RequestAPI";
 
 export default function SelectCountry(props: ISizeMandatory) {
-  const [age, setAge] = useState("");
-  const [countries, setCountries] = useState<ICountry[]>([]);
+  const [requestCountries, setRequestCountries] = useState<ICountry[]>([]);
+  const { country, setCountry, setDisabledLeague } = useContext(TradeContext);
 
   useEffect(() => {
     const getCountries = async () => {
@@ -22,7 +23,7 @@ export default function SelectCountry(props: ISizeMandatory) {
           "a9ba8b0d74bdb2c28b0804297a95643f",
           "countries"
         );
-        setCountries(result.data.response);
+        setRequestCountries(result.data.response);
       } catch (error) {
         console.error(error);
       }
@@ -32,20 +33,20 @@ export default function SelectCountry(props: ISizeMandatory) {
   }, []);
 
   const handleCountry = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+    setCountry(event.target.value);
+    setDisabledLeague(false);
   };
 
   return (
     <>
-      <div>{age}</div>
       <Grid item {...props}>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel>País</InputLabel>
-          <Select value={age} label="País" onChange={handleCountry}>
+          <Select value={country} label="País" onChange={handleCountry}>
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {countries.map((country, index) => (
+            {requestCountries.map((country, index) => (
               <MenuItem key={index} value={country.name}>
                 {country.name}
               </MenuItem>
