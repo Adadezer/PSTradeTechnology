@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 // import React, { useContext } from "react";
 
 import SelectCountry from "../components/SelectCountry";
+import SelectLeague from "../components/SelectLeague";
 // import TradeContext from "../context/TradeContext";
 
 function Home() {
@@ -20,6 +21,7 @@ function Home() {
         sx={{ overflow: "auto", maxHeight: "86vh" }}
       >
         <SelectCountry />
+        <SelectLeague />
       </Grid>
     </>
   );
