@@ -11,8 +11,18 @@ function Login() {
   const { apiKey } = useContext(TradeContext);
   const navigate = useNavigate();
 
-  const LoginKey = () => {
-    RequestAPI(apiKey, "countries", navigate);
+  const LoginKey = async () => {
+    const validationKey = await RequestAPI(apiKey, "countries");
+    console.log("requestAPI: ", validationKey);
+    try {
+      if (validationKey.data.errors.length === 0) {
+        navigate("/home");
+      } else {
+        navigate("/404");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

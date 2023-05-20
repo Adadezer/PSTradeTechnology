@@ -2,7 +2,7 @@ import { Grid, TextField } from "@mui/material";
 import React, { useContext } from "react";
 
 import TradeContext from "../context/TradeContext";
-import { ISizeMandatory } from "../interfaces/ISizeMandatory";
+import ISizeMandatory from "../interfaces/ISizeMandatory";
 
 function InputLogin(props: ISizeMandatory) {
   const { apiKey, setApiKey } = useContext(TradeContext);
