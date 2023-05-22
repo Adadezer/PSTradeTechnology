@@ -8,10 +8,11 @@ export default function InputsProvider({ children }: any) {
   const [country, setCountry] = useState<string>("");
   const [league, setLeague] = useState<string>("");
   const [listLeagues, setListLeagues] = useState<IData[]>([]);
+  const [disabledLeague, setDisabledLeague] = useState<boolean>(true);
   const [season, setSeason] = useState<string>("");
   const [listSeasons, setListSeasons] = useState<ISeason[]>([]);
-  const [disabledLeague, setDisabledLeague] = useState<boolean>(true);
   const [disabledSeason, setDisabledSeason] = useState<boolean>(true);
+  const [team, setTeam] = useState<string>("");
   const [disabledTeam, setDisabledTeam] = useState<boolean>(true);
 
   const myContext = {
@@ -30,6 +31,8 @@ export default function InputsProvider({ children }: any) {
     disabledLeague,
     setDisabledLeague,
     disabledSeason,
+    team,
+    setTeam,
     setDisabledSeason,
     disabledTeam,
     setDisabledTeam,

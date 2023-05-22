@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import SelectCountry from "../components/SelectCountry";
 import SelectLeague from "../components/SelectLeague";
 import SelectSeason from "../components/SelectSeason";
+import SelectTeam from "../components/SelectTeam";
 
 function Home() {
   return (
@@ -21,6 +22,7 @@ function Home() {
         <SelectCountry />
         <SelectLeague />
         <SelectSeason />
+        <SelectTeam />
       </Grid>
     </>
   );
