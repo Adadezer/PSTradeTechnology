@@ -1,12 +1,10 @@
 import { Grid } from "@mui/material";
-// import React, { useContext } from "react";
 
 import SelectCountry from "../components/SelectCountry";
 import SelectLeague from "../components/SelectLeague";
-// import TradeContext from "../context/TradeContext";
+import SelectSeason from "../components/SelectSeason";
 
 function Home() {
-  // const { apiKey } = useContext(TradeContext);
   return (
     <>
       <h1>Home</h1>
@@ -22,6 +20,7 @@ function Home() {
       >
         <SelectCountry />
         <SelectLeague />
+        <SelectSeason />
       </Grid>
     </>
   );
