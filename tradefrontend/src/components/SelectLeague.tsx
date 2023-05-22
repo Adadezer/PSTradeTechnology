@@ -5,7 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import * as React from "react";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 
 import TradeContext from "../context/TradeContext";
 import type { IData } from "../interfaces/ILeagues";
@@ -13,9 +13,15 @@ import ISizeMandatory from "../interfaces/ISizeMandatory";
 import RequestAPI from "../utils/RequestAPI";
 
 export default function SelectLeague(props: ISizeMandatory) {
-  const [league, setLeague] = useState("");
-  const [listLeagues, setListLeagues] = useState<IData[]>([]);
-  const { country, disabledLeague, setDisabledTeam } = useContext(TradeContext);
+  const {
+    country,
+    league,
+    setLeague,
+    disabledLeague,
+    setDisabledSeason,
+    listLeagues,
+    setListLeagues,
+  } = useContext(TradeContext);
 
   useEffect(() => {
     const getLeagues = async () => {
@@ -39,7 +45,8 @@ export default function SelectLeague(props: ISizeMandatory) {
 
   const handleLeague = (event: SelectChangeEvent) => {
     setLeague(event.target.value);
-    setDisabledTeam(false);
+    setDisabledSeason(false);
+    console.log("liste leagues: ", listLeagues);
   };
 
   return (
@@ -51,7 +58,7 @@ export default function SelectLeague(props: ISizeMandatory) {
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {listLeagues.map((league, index) => (
+            {listLeagues.map((league: IData, index: string) => (
               <MenuItem key={index} value={league.league.name}>
                 {league.league.name}
               </MenuItem>
