@@ -12,10 +12,6 @@ interface ICountry {
 }
 
 interface ISeason {
-  year: number;
-  start: string;
-  end: string;
-  current: boolean;
   coverage: {
     fixtures: {
       events: boolean;
@@ -23,18 +19,23 @@ interface ISeason {
       statistics_fixtures: boolean;
       statistics_players: boolean;
     };
-    standings: boolean;
+    injuries: boolean;
+    odds: boolean;
     players: boolean;
-    top_scorers: boolean;
+    predictions: boolean;
+    standings: boolean;
     top_assists: boolean;
     top_cards: boolean;
-    injuries: boolean;
-    predictions: boolean;
-    odds: boolean;
+    top_scorers: boolean;
   };
+  current: boolean;
+  end: string;
+  start: string;
+  year: number;
 }
 
 interface IData {
+  year: string | number | readonly string[] | undefined;
   league: ILeague;
   country: ICountry;
   seasons: ISeason[];
