@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "https://v3.football.api-sports.io";
+const apiUrl = "https://v3.football.api-sports.io/";
 
 const RequestAPI = async (apiKey: string, endpoint: string) => {
   const config = {

@@ -20,6 +20,7 @@ export default function SelectSeasons(props: ISizeMandatory) {
     listLeagues,
     listSeasons,
     setListSeasons,
+    setDisabledTeam,
   } = useContext(TradeContext);
 
   useEffect(() => {
@@ -36,6 +37,7 @@ export default function SelectSeasons(props: ISizeMandatory) {
 
   const handleSeason = (event: SelectChangeEvent) => {
     setSeason(event.target.value);
+    setDisabledTeam(false);
     console.log("list Seasons: ", listSeasons);
   };
 
