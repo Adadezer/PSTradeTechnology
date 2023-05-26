@@ -1,8 +1,9 @@
 import { Grid } from "@mui/material";
 
+import CardFormation from "../components/CardFormation";
+import CardPlayer from "../components/CardPlayer";
 import SelectCountry from "../components/SelectCountry";
 import SelectLeague from "../components/SelectLeague";
-import SelectPlayer from "../components/SelectPlayer";
 import SelectSeason from "../components/SelectSeason";
 import SelectTeam from "../components/SelectTeam";
 
@@ -24,7 +25,8 @@ function Home() {
         <SelectLeague />
         <SelectSeason />
         <SelectTeam />
-        <SelectPlayer />
+        <CardFormation />
+        <CardPlayer />
       </Grid>
     </>
   );
