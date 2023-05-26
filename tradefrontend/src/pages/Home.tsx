@@ -6,6 +6,7 @@ import SelectCountry from "../components/SelectCountry";
 import SelectLeague from "../components/SelectLeague";
 import SelectSeason from "../components/SelectSeason";
 import SelectTeam from "../components/SelectTeam";
+import TableGameResult from "../components/TableGameResult";
 
 function Home() {
   return (
@@ -25,8 +26,9 @@ function Home() {
         <SelectLeague />
         <SelectSeason />
         <SelectTeam />
-        <CardFormation />
         <CardPlayer />
+        <CardFormation />
+        <TableGameResult />
       </Grid>
     </>
   );
