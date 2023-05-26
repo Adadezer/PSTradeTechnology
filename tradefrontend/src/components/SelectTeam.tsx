@@ -35,8 +35,7 @@ export default function SelectTeam(props: ISizeMandatory) {
     if (selectedLeague) {
       setIdLeague(selectedLeague.league.id);
     }
-    console.log("idLeague: ", idLeague);
-    console.log("season: ", season);
+
     const getTeams = async () => {
       try {
         const result = await RequestAPI(
@@ -53,7 +52,7 @@ export default function SelectTeam(props: ISizeMandatory) {
       getTeams();
     }
   }, [idLeague, league, listLeagues, season]);
-  console.log("RTd: ", requestTeams);
+
   const handleTeam = (event: SelectChangeEvent) => {
     setTeam(event.target.value);
   };

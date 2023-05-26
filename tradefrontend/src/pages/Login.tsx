@@ -13,7 +13,7 @@ function Login() {
 
   const LoginKey = async () => {
     const validationKey = await RequestAPI(apiKey, "countries");
-    console.log("requestAPI: ", validationKey);
+
     try {
       if (validationKey.data.errors.length === 0) {
         navigate("/home");
