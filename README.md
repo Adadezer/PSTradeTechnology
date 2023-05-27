@@ -1,4 +1,4 @@
-# Processo Trade Technology
+# Processo Seletivo Trade Technology
 
 ## ⚙️ Como Utilizar
 
