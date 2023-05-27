@@ -14,6 +14,7 @@ import RequestAPI from "../utils/RequestAPI";
 
 export default function SelectLeague(props: ISizeMandatory) {
   const {
+    apiKey,
     country,
     league,
     setLeague,
@@ -26,10 +27,7 @@ export default function SelectLeague(props: ISizeMandatory) {
   useEffect(() => {
     const getLeagues = async () => {
       try {
-        const result = await RequestAPI(
-          "a9ba8b0d74bdb2c28b0804297a95643f",
-          "leagues"
-        );
+        const result = await RequestAPI(`${apiKey}`, "leagues");
         setListLeagues(
           result.data.response.filter(
             (league: IData) => league.country.name === country
@@ -46,7 +44,6 @@ export default function SelectLeague(props: ISizeMandatory) {
   const handleLeague = (event: SelectChangeEvent) => {
     setLeague(event.target.value);
     setDisabledSeason(false);
-    console.log("liste leagues: ", listLeagues);
   };
 
   return (

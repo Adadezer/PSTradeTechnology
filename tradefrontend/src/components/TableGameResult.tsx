@@ -20,7 +20,8 @@ export default function CardFormation(props: ISizeMandatory) {
   const [requestTeamStatistics, setRequestTeamStatistics] = useState<
     IStatistics[]
   >([]);
-  const { idLeague, season, team, requestTeams } = useContext(TradeContext);
+  const { apiKey, idLeague, season, team, requestTeams } =
+    useContext(TradeContext);
 
   useEffect(() => {
     const selectedTeam = requestTeams.find(
@@ -30,17 +31,13 @@ export default function CardFormation(props: ISizeMandatory) {
     if (selectedTeam) {
       setIdTeam(selectedTeam.team.id);
     }
-    console.log("selectedTeam: ", selectedTeam);
   }, [team, requestTeams]);
 
-  console.log("season: ", season);
-  console.log("idTeam: ", idTeam);
-  console.log("idLeague: ", idLeague);
   useEffect(() => {
     const getTeamStatistics = async () => {
       try {
         const result = await RequestAPI(
-          "a9ba8b0d74bdb2c28b0804297a95643f",
+          `${apiKey}`,
           `teams/statistics?season=${season}&team=${idTeam}&league=${idLeague}`
         );
         setRequestTeamStatistics([result.data.response]);
@@ -48,7 +45,7 @@ export default function CardFormation(props: ISizeMandatory) {
         console.error(error);
       }
     };
-    console.log("requestTeamStatistics1: ", requestTeamStatistics);
+
     if (idTeam) {
       getTeamStatistics();
     }
@@ -57,7 +54,6 @@ export default function CardFormation(props: ISizeMandatory) {
   if (!team) {
     return null;
   }
-  console.log("requestTeamStatistics2: ", requestTeamStatistics);
 
   function createData(
     played: number,
