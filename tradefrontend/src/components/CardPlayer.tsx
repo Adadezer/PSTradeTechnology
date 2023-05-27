@@ -18,7 +18,8 @@ import RequestAPI from "../utils/RequestAPI";
 export default function CardPlayer(props: ISizeMandatory) {
   const [idTeam, setIdTeam] = useState<string>("");
   const [requestPlayer, setRequestPlayers] = useState<IPlayer[]>([]);
-  const { idLeague, season, team, requestTeams } = useContext(TradeContext);
+  const { apiKey, idLeague, season, team, requestTeams } =
+    useContext(TradeContext);
 
   useEffect(() => {
     const selectedTeam = requestTeams.find(
@@ -34,7 +35,7 @@ export default function CardPlayer(props: ISizeMandatory) {
     const getPlayers = async () => {
       try {
         const result = await RequestAPI(
-          "a9ba8b0d74bdb2c28b0804297a95643f",
+          `${apiKey}`,
           `players?league=${idLeague}&season=${season}&team=${idTeam}`
         );
         setRequestPlayers(result.data.response);

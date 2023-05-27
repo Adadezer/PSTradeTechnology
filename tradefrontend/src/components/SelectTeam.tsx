@@ -15,6 +15,7 @@ import RequestAPI from "../utils/RequestAPI";
 
 export default function SelectTeam(props: ISizeMandatory) {
   const {
+    apiKey,
     league,
     listLeagues,
     idLeague,
@@ -39,7 +40,7 @@ export default function SelectTeam(props: ISizeMandatory) {
     const getTeams = async () => {
       try {
         const result = await RequestAPI(
-          "a9ba8b0d74bdb2c28b0804297a95643f",
+          `${apiKey}`,
           `teams?season=${season}&league=${idLeague}`
         );
         setRequestTeams(result.data.response);

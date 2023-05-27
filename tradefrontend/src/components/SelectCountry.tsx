@@ -14,15 +14,13 @@ import RequestAPI from "../utils/RequestAPI";
 
 export default function SelectCountry(props: ISizeMandatory) {
   const [requestCountries, setRequestCountries] = useState<ICountry[]>([]);
-  const { country, setCountry, setDisabledLeague } = useContext(TradeContext);
+  const { apiKey, country, setCountry, setDisabledLeague } =
+    useContext(TradeContext);
 
   useEffect(() => {
     const getCountries = async () => {
       try {
-        const result = await RequestAPI(
-          "a9ba8b0d74bdb2c28b0804297a95643f",
-          "countries"
-        );
+        const result = await RequestAPI(`${apiKey}`, "countries");
         setRequestCountries(result.data.response);
       } catch (error) {
         console.error(error);
